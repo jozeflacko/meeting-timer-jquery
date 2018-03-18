@@ -1,0 +1,267 @@
+.scrum-app {
+  padding: 20px;
+  /* border:1px solid #DDD; */
+  /* background: #f3fcff; */
+  padding-bottom: 100px;
+  font-family:arial;
+  position: relative;
+  overflow: hidden;
+}
+h1 {
+  margin-bottom:0px;
+  margin-top: 0px;
+}
+
+.buttonsPanel {position: relative;}
+.buttonsPanel > * {
+  min-width: 60px;
+}
+
+.totalTimerLabel {
+  width:100%;
+  display:block;
+  text-align: center;
+  height: 28px;
+  position: relative;
+  left: 21px;
+  z-index: 30;
+  line-height: 30px;
+  color: red;
+}
+
+.totalTime {
+  border:none;
+  font-weight: bold;
+  font-size: 40px;
+  color: #5d5d5d;
+  float: right;
+  text-align: right;
+  position: absolute;
+  right: -6px;
+  top: -4px;
+  width: 250px;
+}
+
+.header {
+  width:100%;
+  display:block;
+  margin-bottom: -1px;
+}
+.header > * {
+  display:inline-block;
+  width:auto;
+}
+.header > .panel {
+  width:100%;
+  position: relative;
+}
+#breakpoint {
+  display:block;
+  padding: 4px;
+  width:100px;
+  text-align:center;
+  margin-left:50%;
+  position:relative;
+  left: -34px;
+  /* width: 50px; */
+  height: 32px;
+  border-color: #ff6666;
+  background: #ffecec;
+  color: red;
+  font-size: 25px;
+  z-index: 20;
+}
+.jbtn.pause {
+  background:#e8b889;
+}
+.jbtn.stop {
+  background:#e88989;
+}
+
+.jbtn {
+  /* border:1px solid #DDD; */
+  padding:4px 8px;
+  margin-bottom: 9px;
+  margin-right: 5px;
+  background:white;
+  border-radius:4px;
+  display:inline-block;
+  font-size:20px;
+  cursor:pointer;
+  box-shadow:2px 2px 2px #dddddd7d;
+  background: #f7f7f7;
+  color: #505050;
+  border: 1px solid #b9b9b963;
+  font-weight: bold;
+  line-height: 23px;
+  text-align: center;
+  white-space: nowrap;
+}
+.pools {
+  padding: 0px 35px 0px 80px;
+  padding-top: 0px;
+  position:relative;
+}
+.pool {
+  background: #ffeeee7a;
+  width:100%;
+  position:relative;
+  cursor:pointer;
+  height:40px;
+  margin: 5px 0px;
+  box-shadow: 2px 2px 2px #ffffff;
+}
+
+.pool > .progressContainer {
+  width:50%;
+  background: #fbfbfb;
+  white-space:nowrap;
+  vertical-align:top;
+  height:40px;
+  position:relative;
+}
+.pool > .progressContainer:before {
+  content:"";
+  position:absolute;
+  left:0px;
+  height: 120%;
+  top: -10%;
+  width: 2px;
+  background: #cccccc;
+
+  z-index:300;
+}
+.pool > .progressContainer:after {
+  content:"";
+  position:absolute;
+  right:0px;
+  height: 120%;
+  top: -10%;
+  width: 2px;
+  background: #f00;
+}
+.pool > .progressContainer > .progressBar {
+  width:0%;
+  height:40px;
+  background:green;
+  display:inline-block;
+  transition: all .1s;
+  /* border-radius: 0px 50px 50px 0px; */
+  filter: opacity(65%);
+}
+.pool > .progressContainer > .progressBar:before {
+  width:80px;
+  content:"";
+  height:40px;
+  background: inherit;
+  opacity: 0.5;
+  position:absolute;
+  left:-80px;
+}
+.pool > .progressContainer > .participantContainer {
+  display:inline-block;
+  width: 80px;
+  height: 40px;
+  position:relative;
+  top: -26px;
+  left: -80px;
+  border-radius: 0px;
+  text-align:center;
+  z-index:10;
+  font-weight: bold;
+  font-size: 16px;
+}
+.pool > .progressContainer > .participantContainer > .name{
+  position:relative;
+  top: 12px;
+}
+.pool > .progressContainer > .time,
+.pool > .progressContainer > .time:focus {
+      display:inline-block;
+      top: -12px;
+      left: -80px;
+      position: relative;
+      border:none;
+      background:transparent;
+      z-index:9;
+      text-decoration:none;
+      outline: none;
+      cursor:context-menu;
+      font-size: 21px;
+      z-index: 100;
+      background: transparent;
+      width: 60px;
+      color: inherit;
+      text-align: center;
+}
+.pool > .remove {
+  position: absolute;
+  right: -26px;
+  top: -9px;
+  padding: 2px;
+  height: 21px;
+  width: 21px;
+  line-height: 21px;
+  /* background: transparent; */
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent;
+  color: #e88989;
+  border-radius: 50%;
+  text-align: center;
+}
+.newPool {
+  margin-top: 90px;
+  text-align: left;
+  white-space: nowrap;
+  margin-right: 0px;
+  background: white;
+  z-index: 4000;
+  vertical-align: top;
+}
+.newPool > input {
+  border-radius: 0;
+  border-right:0px;
+  width: 173px;
+  height: 29px;
+  position: relative;
+  background: white;
+  top: -2px;
+  z-index: 30000;
+  padding: 0px 5px;
+}
+.newPool > .newPoolButton {
+  margin-left:10px;
+  margin-right:0px;
+  position:relative;
+  margin:0px;
+  border-radius: 0px;
+  height: 22px;
+  background: #e2e2e2bd;
+}
+.averageBar {
+  position:absolute;
+  width:2px;
+  height:100px;
+  height: 102%;
+  top: -1%;
+  z-index:1000;
+  left: 80px;
+  background: #ffbe00;
+  display:none;
+  transition:left .5s;
+}
+.averageBar #average {
+  position:absolute;
+ 
+  white-space: nowrap;
+  padding: 5px 5px;
+  z-index:1000;
+  left:-75px;
+  width:140px;
+  text-align:center;
+  border:2px solid #ffbe00;
+  background:#fff9e8;
+  color: #846200;
+  bottom:-32px;
+}
