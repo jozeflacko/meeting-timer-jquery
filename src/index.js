@@ -1,6 +1,6 @@
 "use strict";
 
-var INITIAL_TIME = '00:00:03';
+var INITIAL_TIME = '00:02:00';
 
 var participants = [
 	{

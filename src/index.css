@@ -252,7 +252,7 @@ h1 {
   left: 80px;
   background: #ffbe00;
   display:none;
-  transition:left .3s;
+  transition:left .5s;
 }
 .averageBar #average {
   position:absolute;
