@@ -1,6 +1,6 @@
 "use strict";
 
-var INITIAL_TIME = '00:03:00';
+var INITIAL_TIME = '00:00:03';
 
 var participants = [
 	{
@@ -92,7 +92,7 @@ function installStart(element) {
   });
 }
 function setAverageTime() {
- 
+    var relevatPeople = 0;
     var poolsTimes = $('.pool .time');
     var sum = 0;
     
@@ -100,24 +100,33 @@ function setAverageTime() {
       var times = $(this);
       var seconds = times.attr('data-seconds');
           seconds = seconds === undefined ? 0 : Number(seconds);
+      if(seconds > 0)
+        relevatPeople++;
       sum += seconds;
     });
-    var average = parseInt( (sum / poolsTimes.length) ,10);  
+    var average = parseInt( (sum / relevatPeople) ,10);  
     $('#average').text('Average: '+ toHHMMSS(average) );
 }
 function showAvarageBar() {
   var progressBars = $('.pool .progressBar');
-    var sum = 0;
-    
+  var sum = 0;
+  var relevatPeople = 0;
     progressBars.each(function(){
       var progress = $(this);
       var width = parseInt(progress.css('width'),10);
           width = width === undefined ? 0 : Number(width);
+      if(width > 0)
+        relevatPeople++;
+
       sum += width;
     });
-    var average = parseInt( (sum / progressBars.length) ,10);
+    var average = parseInt( (sum / relevatPeople) ,10);
     var left = (average + $('.participantContainer').first().width()) +  'px';
-    $('.averageBar').css({ 'left': left , display:'block'});
+    $('.averageBar').css({ 'left': left });
+
+    if( relevatPeople > 1)
+      $('.averageBar').css({ 'display': 'block' });
+
     setAverageTime();    
 }
 function start() {
@@ -145,6 +154,7 @@ function installPause(element) {
 function pause() {
   clearInterval(interval);
   interval = undefined;
+  showAvarageBar();
 }
 function installStop(element) {  
   element.click(function(){
@@ -152,6 +162,7 @@ function installStop(element) {
     $('.pool').removeClass('overtime');
     $('.pool').removeClass('almostOvertime');
     $('.pool').removeClass('stop');
+    $('.pool').removeAttr('data-beep-played');
     $('.pool .progressBar').css('width','');
     $('.pool .time').val('').attr('data-seconds','0');
     pause();
@@ -188,7 +199,7 @@ function createPools(app, participants, breakpointInput) {
     $('.pools').append('<div class="averageBar"><span id="average">00:00:00</span></div>');
 }
 function createPool(container, participant, breakpointInput) {	
-  var pool = $('<div class="pool" />');
+  var pool = $('<div class="pool" data-beep-played="0%" />');
   var progressContainer = $('<div class="progressContainer" />');
   var progressBar = $('<div class="progressBar" />');  
   var time = $('<input class="time" data-seconds="0"/>');
@@ -203,6 +214,7 @@ function createPool(container, participant, breakpointInput) {
   pool.append(removeButton);
   removeButton.click(function(e) {
     $(e.target).closest('.pool').remove();
+    showAvarageBar();
   });
 
   container.append(pool);
@@ -229,30 +241,38 @@ function tryMove(pool, breakpointInput, move) {
       var progressStep = parseInt( (progressContainer.css('width') ), 10) / breakpoint; 
     	var progressBar = progressContainer.find('.progressBar');
       var time = pool.find('.time');
-    	var seconds = Number(time.attr('data-seconds'), 10);
+    	var seconds = Number(time.attr('data-seconds'), 10);      
       seconds += 0.1;
       seconds = seconds.toFixed(2);
       time.attr('data-seconds', seconds);
       time.val(toHHMMSS(seconds));   
 
-      showAvarageBar();
+    
       var movement = Math.floor(seconds * progressStep);
       if(move === false) {
         var maxWidth = ( parseInt(progressContainer.css('width'),10) ) * 2;
         var percent = (movement * 200 / maxWidth) ;
 
         //progressBar.css('width', movement + 'px');
-        progressBar.css('width', percent.toFixed(2) + '%');
+        progressBar.css('width', percent.toFixed(2) + '%');        
       }
-      
-      if(breakpoint * 2 > seconds) {
-        move = false;
-      } else {          
-        move = true;
-      }     
+
+      showAvarageBar();
+
+      if(Number(breakpoint) < Number(seconds) ) {        
+        if( pool.attr('data-beep-played') === undefined || pool.attr('data-beep-played') === '0%' ) {
+          playBeep();
+          pool.attr('data-beep-played','100%');
+        }     
+      }
+      if(Number(2 * breakpoint) ==  Number(seconds)) {           
+        pool.attr('data-beep-played','200%');
+        playBeep(true);        
+      }
+      move = (breakpoint * 2 > seconds) ? false : true;
       setTimeout(function() {
-          tryMove(pool, breakpointInput, move);
-      }, 100);
+          tryMove(pool, breakpointInput, move); 
+      }, 97);
       
     } 
 }
@@ -332,6 +352,23 @@ function fromHHMMSStoSeconds(hms) {
     var seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]); 
 
     return seconds;
+}
+
+function playBeep(more) {
+    play();    
+    if(more === true) {
+      setTimeout(function(){
+        play();
+        setTimeout(function(){
+          play();
+        },250);  
+      },250);   
+    }
+
+    function play() {
+      document.getElementById("audio").play();   
+    }
+
 }
 
 
