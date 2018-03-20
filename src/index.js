@@ -1,6 +1,6 @@
 "use strict";
 
-var INITIAL_TIME = '00:02:00';
+var INITIAL_TIME = '00:00:05';
 
 var participants = [
 	{
@@ -307,9 +307,9 @@ function setRandomColor(element, element2) {
 
   var bgColorWithTransparency = addTransparency(bgcolor);
 
-  element.css('background', bgColorWithTransparency );
+  element.css('background-color', bgColorWithTransparency );
   element.css('color', 'black');
-  element2.css('background', bgColorWithTransparency );
+  element2.css('background-color', bgColorWithTransparency );
   element2.css('color', 'black');
 }
 function invertColor(hex) {
