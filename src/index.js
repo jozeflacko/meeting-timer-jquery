@@ -1,6 +1,6 @@
 "use strict";
 
-var INITIAL_TIME = '00:00:05';
+var INITIAL_TIME = '00:02:30';
 
 var participants = [
 	{
@@ -52,9 +52,11 @@ $(document).ready(function() {
 
 function createApp() {
   var app = $('<div class="scrum-app" />');
-  var title = $('<h1>Scrum Timer</h1>');
+  var title = $('<h1>Meeting Timer</h1>');
+  var hint = $('<i class="This is a time tracker for <b>Stand-up Meetings</b>. <br/>To try it out, add participants into the pool below and when you are ready, click on the Participant pool. Timer will start automatically</i>');
   $('body').append(app);
   $(app).append(title);
+  $(app).append(hint);
   
   var breakpoint = createHeader(app);
 	createPools(app, participants, breakpoint);
@@ -71,12 +73,12 @@ function createMainTimer(container) {
   container.append(panel); 
     var buttonsPanel = $('<div class="buttonsPanel"></div>');  
     panel.append(buttonsPanel);
-      var pause = $('<span class="jbtn pause">Pause</span>');  
-      buttonsPanel.append(pause);
-      installPause(pause);
-      var stop = $('<span class="jbtn stop">Reset</span>');  
+      var stop = $('<span class="jbtn stop">Stop</span>');  
       buttonsPanel.append(stop);
-      installStop(stop);    
+      installStop(stop);
+      var reset = $('<span class="jbtn reset">Reset</span>');  
+      buttonsPanel.append(reset);
+      installReset(reset);    
     var totalTimerLabel = $('<span class="totalTimerLabel">Time Limit</span>');  
     panel.append(totalTimerLabel);    
     var totalTime = $('<input data-totalTime="0" class="totalTime"/>');
@@ -145,18 +147,18 @@ function updateTotalTime(step) {
   $('.totalTime').val(toHHMMSS(seconds)).attr('data-totalTime', seconds);
 }
 
-function installPause(element) {  
+function installStop(element) {  
   element.click(function(){
     $('.pool').removeClass('active');
-    pause();
+    stop();
   });
 }
-function pause() {
+function stop() {
   clearInterval(interval);
   interval = undefined;
   showAvarageBar();
 }
-function installStop(element) {  
+function installReset(element) {  
   element.click(function(){
   	$('.pool').removeClass('active');
     $('.pool').removeClass('overtime');
@@ -165,14 +167,12 @@ function installStop(element) {
     $('.pool').removeAttr('data-beep-played');
     $('.pool .progressBar').css('width','');
     $('.pool .time').val('').attr('data-seconds','0');
-    pause();
+    stop();
     $('.totalTime').val('').attr('data-totalTime', '0');
     $('.averageBar').css({display:'none', left:'80px'});
     $('#average').text('00:00:00');
   });
 }
-
-
 
 function createPools(app, participants, breakpointInput) {
  	var pools = $('<div class="pools" />');
