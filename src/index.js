@@ -53,7 +53,7 @@ $(document).ready(function() {
 function createApp() {
   var app = $('<div class="scrum-app" />');
   var title = $('<h1>Meeting Timer</h1>');
-  var hint = $('<i class="This is a time tracker for <b>Stand-up Meetings</b>. <br/>To try it out, add participants into the pool below and when you are ready, click on the Participant pool. Timer will start automatically</i>');
+  var hint = $('<i class="hint">This is a time tracker for <b>Stand-up Meetings</b>. <br>To try it out, add participants into the pool below and when you are ready, click on a Participant pool. Timer will start automatically</i>');
   $('body').append(app);
   $(app).append(title);
   $(app).append(hint);
