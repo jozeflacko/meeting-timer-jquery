@@ -51,9 +51,13 @@ $(document).ready(function() {
 });
 
 function createApp() {
+  
+  
+  
+  
   var app = $('<div class="scrum-app" />');
   var title = $('<h1>Meeting Timer</h1>');
-  var hint = $('<i class="hint">This is a time tracker for <b>Stand-up Meetings</b>. <br>To try it out, add participants into the pool below and when you are ready, click on a Participant pool. Timer will start automatically</i>');
+  var hint = $('<i class="hint">This is a timer for short <b>Stand-up Meetings</b>. <br>Set time limit for speech, add participants into the pool below and when they are ready to talk, just click on arow with their name. Timer will start automatically.</i>');
   $('body').append(app);
   $(app).append(title);
   $(app).append(hint);
@@ -67,6 +71,43 @@ function createHeader(app) {
   app.append(header);
   return createMainTimer(header);  
 }
+
+var INITIAL_TIME_COOKIE = 'init_time_cookie';
+function getCookieInitialTime() {
+  var initialTime = getCookie(INITIAL_TIME_COOKIE);
+  if(initialTime)
+    return initialTime;
+
+  return INITIAL_TIME;
+}
+function setCookieInitialTime(value) {
+  if(value !== undefined && value !== '' && value.split(':').length === 3)
+    setCookie(INITIAL_TIME_COOKIE, value);
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+      }
+  }
+  return "";
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 
 function createMainTimer(container) {
   var panel = $('<div class="panel"></div>');  
@@ -83,7 +124,11 @@ function createMainTimer(container) {
     panel.append(totalTimerLabel);    
     var totalTime = $('<input data-totalTime="0" class="totalTime"/>');
     panel.append(totalTime);    
-    var breakpoint = $('<input id="breakpoint" value="'+INITIAL_TIME+'" />');  
+    var breakpoint = $('<input id="breakpoint" value="'+getCookieInitialTime()+'" />');  
+    breakpoint.on('change', function() {
+      var value = $(this).val();
+      setCookieInitialTime(value);
+    });
     panel.append(breakpoint);
   
   return breakpoint;
