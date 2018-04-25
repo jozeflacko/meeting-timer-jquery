@@ -3,6 +3,7 @@
 var INITIAL_TIME = '00:01:00';
 var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan'];
 var interval;
+var ANIMATION_TIMEOUT = 97;
 
 $(document).ready(function() {
 	createApp();	
@@ -289,7 +290,7 @@ function tryMove(pool, breakpointInput, move) {
       move = (breakpoint * 2 > seconds) ? false : true;
       setTimeout(function() {
           tryMove(pool, breakpointInput, move); 
-      }, 97);
+      }, ANIMATION_TIMEOUT);
       
     } 
 }
@@ -372,15 +373,18 @@ function fromHHMMSStoSeconds(hms) {
 }
 
 function playBeep(more) {
-    play();    
-    if(more === true) {
-      setTimeout(function(){
-        play();
+   setTimeout(function(){
+      play();    
+      if(more === true) {
         setTimeout(function(){
           play();
-        },250);  
-      },250);   
-    }
+          setTimeout(function(){
+            play();
+          },250);  
+        },250);   
+      }
+   }, ANIMATION_TIMEOUT); 
+   
 
     function play() {
       document.getElementById("audio").play();   
