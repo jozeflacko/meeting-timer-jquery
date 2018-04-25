@@ -1,6 +1,6 @@
 "use strict";
 
-var INITIAL_TIME = '00:02:30';
+var INITIAL_TIME = '00:01:00';
 
 var participants = [
 	{
@@ -81,7 +81,7 @@ function getCookieInitialTime() {
   return INITIAL_TIME;
 }
 function setCookieInitialTime(value) {
-  if(value !== undefined && value !== '' && value.split(':').length === 3)
+  if(value !== undefined && value !== '' && value.length === 8 && value.split(':').length === 3)
     setCookie(INITIAL_TIME_COOKIE, value);
 }
 
