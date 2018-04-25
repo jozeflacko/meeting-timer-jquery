@@ -1,49 +1,7 @@
 "use strict";
 
 var INITIAL_TIME = '00:01:00';
-
-var participants = [
-	{
-    name:'Gabriel',
-    icon:'rocket'
-  },
-  {
-    name:'Fritz',
-    icon:'rocket'
-  },
-  {
-    name:'Jozef',
-    icon:'rocket'
-  },
-  {
-    name:'Emil',
-    icon:'rocket'
-  },
-  {
-    name:'Fede',
-    icon:'rocket'
-  },
-  {
-    name:'Inge',
-    icon:'rocket'
-  },
-  {
-    name:'Stefan',
-    icon:'rocket'
-  },
-  {
-    name:'Samuel',
-    icon:'rocket'
-  },
-  {
-    name:'Matheus',
-    icon:'rocket'
-  },
-  {
-    name:'Hoda',
-    icon:'rocket'
-  },
-];
+var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan'];
 var interval;
 
 $(document).ready(function() {
@@ -63,7 +21,7 @@ function createApp() {
   $(app).append(hint);
   
   var breakpoint = createHeader(app);
-	createPools(app, participants, breakpoint);
+	createPools(app, getParticipantsCookie(), breakpoint);
 }
 
 function createHeader(app) {
@@ -83,6 +41,20 @@ function getCookieInitialTime() {
 function setCookieInitialTime(value) {
   if(value !== undefined && value !== '' && value.length === 8 && value.split(':').length === 3)
     setCookie(INITIAL_TIME_COOKIE, value);
+}
+var INITIAL_PARTICIPANTS_COOKIE = 'init_participants_cookie';
+function getParticipantsCookie() {
+  var init = getCookie(INITIAL_PARTICIPANTS_COOKIE);
+  if(init)
+    return init;
+
+  return PARTICIPANTS;
+}
+function setParticipantsWithCookie(value) {
+  if(value !== undefined && value !== '') {
+ 
+    setCookie(INITIAL_PARTICIPANTS_COOKIE, value);
+  }
 }
 
 function getCookie(cname) {
@@ -239,7 +211,7 @@ function createPools(app, participants, breakpointInput) {
             }
             $(event.target).prev('.newPoolName').val('');
             var icon = 'rocket';
-            createPool(pools, { name: name, icon:icon }, breakpointInput );
+            createPool(pools, name, breakpointInput );
     });
     $('.pools').append('<div class="averageBar"><span id="average">00:00:00</span></div>');
 }
@@ -252,7 +224,7 @@ function createPool(container, participant, breakpointInput) {
   
   pool.append(progressContainer); 
   progressContainer.append(progressBar);
-  var participantContainer = $('<div class="participantContainer fa '+participant.icon+'"><span class="name">'+participant.name+'</span></div>');
+  var participantContainer = $('<div class="participantContainer"><span class="name">'+participant+'</span></div>');
   progressContainer.append(participantContainer);
   setRandomColor(progressBar, participantContainer);
   progressContainer.append(time);
