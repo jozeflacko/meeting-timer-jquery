@@ -1,7 +1,7 @@
 "use strict";
 
 var INITIAL_TIME = '00:01:00';
-var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan'];
+var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan','Abdusaziz','Ognjen'];
 var interval;
 var ANIMATION_TIMEOUT = 97;
 
