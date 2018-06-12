@@ -78,7 +78,7 @@ $( document ).ready(function() {
   });
 
 
-  $('#start-record-btn').on('click', function(e) {
+  $('#stop-record-btn').on('click', function(e) {
     recognition.stop();
     instructions.text('Voice recognition paused.');
   });

@@ -396,14 +396,10 @@ function playBeep(more) {
 
 function changePerson(person) {
 
-  var findPerson = person;
-
-  findPerson = findPerson.toLowerCase();
-
-  var $pool = $('.pool[data-person="'+findPerson+'"]');
-
-  $pool.click();
-
+  var findPerson = findMostSimilarStringInArray(person, PARTICIPANTS);
+  
+  if(findPerson !== undefined)
+    $('.pool[data-person="'+findPerson+'"]').click();
 }
 
 
