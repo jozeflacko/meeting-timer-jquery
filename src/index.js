@@ -219,7 +219,7 @@ function createPools(app, participants, breakpointInput) {
     $('.pools').append('<div class="averageBar"><span id="average">00:00:00</span></div>');
 }
 function createPool(container, participant, breakpointInput) {	
-  var pool = $('<div class="pool" data-beep-played="0%" />');
+  var pool = $('<div class="pool" data-beep-played="0%" data-person="'+participant.toLowerCase()+'" />');
   var progressContainer = $('<div class="progressContainer" />');
   var progressBar = $('<div class="progressBar" />');  
   var time = $('<input class="time" data-seconds="0"/>');
@@ -391,6 +391,18 @@ function playBeep(more) {
     function play() {
       document.getElementById("audio").play();   
     }
+
+}
+
+function changePerson(person) {
+
+  var findPerson = person;
+
+  findPerson = findPerson.toLowerCase();
+
+  var $pool = $('.pool[data-person="'+findPerson+'"]');
+
+  $pool.click();
 
 }
 

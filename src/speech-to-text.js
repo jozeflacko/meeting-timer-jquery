@@ -44,7 +44,9 @@ $( document ).ready(function() {
 
     if(!mobileRepeatBug) {
       noteContent = transcript;
-      noteTextarea.innerhHTML = noteContent;
+      noteTextarea.innerHTML = noteContent;
+
+      changePerson(noteContent);
     }
   };
 
