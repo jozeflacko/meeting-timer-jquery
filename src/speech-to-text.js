@@ -44,7 +44,7 @@ $( document ).ready(function() {
 
     if(!mobileRepeatBug) {
       noteContent = transcript;
-      noteTextarea.val(noteContent);
+      noteTextarea.innerhHTML = noteContent;
     }
   };
 
