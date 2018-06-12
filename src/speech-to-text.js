@@ -44,7 +44,7 @@ $( document ).ready(function() {
 
     if(!mobileRepeatBug) {
       noteContent = transcript;
-      noteTextarea.innerHTML = noteContent;
+      noteTextarea.text(noteContent);
 
       changePerson(noteContent);
     }
