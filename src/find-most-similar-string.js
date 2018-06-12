@@ -5,10 +5,11 @@ function findMostSimilarStringInArray(findString, inThisArray) {
     findString = findString.toLowerCase();
 
     for(x of inThisArray) {
+        
         var thisString = x.toLowerCase();
-        var thisSimilarity = similarity(person,thisParticipant);
+        var thisSimilarity = similarity(findString,thisString);
     
-        if( personSimilarity > maxHeightOfSimilarity ) {
+        if( thisSimilarity > maxSimilarity ) {
             mostSimilar = thisString;
             maxSimilarity = thisSimilarity;
         }
