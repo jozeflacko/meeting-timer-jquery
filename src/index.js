@@ -1,7 +1,7 @@
 "use strict";
 
 var INITIAL_TIME = '00:01:00';
-var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan','Abdusaziz','Ognjen'];
+var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan','Abduaziz','Ognjen'];
 var interval;
 var ANIMATION_TIMEOUT = 97;
 
@@ -10,19 +10,21 @@ $(document).ready(function() {
 });
 
 function createApp() {
-  
-  
-  
-  
   var app = $('<div class="scrum-app" />');
-  var title = $('<h1>Meeting Timer</h1>');
-  var hint = $('<i class="hint">This is a timer for short <b>Stand-up Meetings</b>. <br>Set time limit for speech, add participants into the pool below and when they are ready to talk, just click on arow with their name. Timer will start automatically.</i>');
+  var title = $('<h1>Meeting Timer</h1>');  
   $('body').append(app);
   $(app).append(title);
-  $(app).append(hint);
+  
   
   var breakpoint = createHeader(app);
-	createPools(app, getParticipantsCookie(), breakpoint);
+  createPools(app, getParticipantsCookie(), breakpoint);
+  
+  createHelp(app);
+}
+
+function createHelp(app) {
+  var hint = $('<div class="hint">This is a timer for short <b>Stand-up Meetings</b>. <br>Set time limit for speech, add participants into the pool below and when they are ready to talk, just click on arow with their name. Timer will start automatically.</div>');
+  $(app).append(hint);
 }
 
 function createHeader(app) {
@@ -87,10 +89,10 @@ function createMainTimer(container) {
   container.append(panel); 
     var buttonsPanel = $('<div class="buttonsPanel"></div>');  
     panel.append(buttonsPanel);
-      var stop = $('<span class="jbtn stop">Stop</span>');  
+      var stop = $('<i class="stop fa fa-stop-circle-o" aria-hidden="true"></i>');  
       buttonsPanel.append(stop);
       installStop(stop);
-      var reset = $('<span class="jbtn reset">Reset</span>');  
+      var reset = $('<i class="play fa fa-play-circle-o" aria-hidden="true"></i>');  
       buttonsPanel.append(reset);
       installReset(reset);    
     var totalTimerLabel = $('<span class="totalTimerLabel">Time Limit</span>');  
@@ -125,7 +127,7 @@ function setAverageTime() {
       sum += seconds;
     });
     var average = parseInt( (sum / relevatPeople) ,10);  
-    $('#average').text('Average: '+ toHHMMSS(average) );
+    $('#average').text( toHHMMSS(average) );
 }
 function showAvarageBar() {
   var progressBars = $('.pool .progressBar');
@@ -202,7 +204,7 @@ function createPools(app, participants, breakpointInput) {
   app.append(newPool);
     var newPoolName = $('<input type="text "class="newPoolName"/>');  
     newPool.append(newPoolName);
-    var newPoolButton = $('<span class="newPoolButton jbtn">Add Participant</span>');  
+    var newPoolButton = $('<span class="newPoolButton jbtn">+</span>');  
     newPool.append(newPoolButton);
     newPoolButton.click(function(e) {
             var name = $(event.target).prev('.newPoolName').val();

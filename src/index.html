@@ -7,14 +7,24 @@
   <title>Meeting Timer</title>
   <meta name="description" content="The HTML5 Herald">
   <meta name="author" content="SitePoint">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <audio id="audio" src="http://www.soundjay.com/button/beep-07.wav" autostart="false" ></audio>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="index.css">
 </head>
 
 <body>    
+    <h3 class="no-browser-support">Sorry, Your Browser Doesn't Support the Web Speech API. Try Opening This Demo In Google Chrome.</h3>
+
+    <div class="speech">        
+        <textarea id="note-textarea" placeholder="Create a new note by typing or using voice recognition." rows="6"></textarea>
+        <button id="start-record-btn">Record</button>                
+        <button id="save-note-btn">Stop</button>  
+        <p id="recording-instructions">Press the <strong>Start Recognition</strong> button and allow access.</p>
+    </div>
+
+
+  <script src="speech-to-text.js"></script>
   <script src="index.js"></script>
 </body>
 </html>

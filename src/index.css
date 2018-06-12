@@ -10,7 +10,10 @@
 h1 {
   margin-bottom:0px;
   margin-top: 0px;
-  text-align: center;
+  text-align: left;
+  font-size:20px;
+  color:#EEE;
+  margin:0px;
 }
 .hint {
   background: #ffffd3;
@@ -18,10 +21,9 @@ h1 {
   display: block;
   border: 1px solid #DDD;
   border-radius:4px;
-  max-width: 500px;
-  margin: auto;
   text-align: justify;
   text-indent: 40px;
+  margin-top:10px;
 }
 
 .buttonsPanel {position: relative;text-align: right;margin-right: -11px;top: 70px;}
@@ -37,8 +39,9 @@ h1 {
   position: relative;
   left: 21px;
   z-index: 30;
-  line-height: 30px;
+  line-height: 20px;
   color: red;
+  display: none;
 }
 
 .totalTime {
@@ -73,17 +76,15 @@ h1 {
 #breakpoint {
   display:block;
   padding: 4px;
-  width:100px;
+  width: 60px;
   text-align:center;
   margin-left:50%;
   position:relative;
-  left: -34px;
-  /* width: 50px; */
-  height: 32px;
+  left: -14px;
   border-color: #ff6666;
   background: #ffecec;
   color: red;
-  font-size: 25px;
+  font-size: 15px;
   z-index: 20;
 }
 .jbtn.stop {
@@ -122,8 +123,8 @@ h1 {
   width:100%;
   position:relative;
   cursor:pointer;
-  height: 30px;
-  margin: 5px 0px;
+  height: 20px;
+  margin: 2px 0px;
   box-shadow: 2px 2px 2px #ffffff;
 }
 
@@ -132,8 +133,12 @@ h1 {
   background: #fbfbfb;
   white-space:nowrap;
   vertical-align:top;
-  height: 30px;
+  height: 20px;
   position:relative;
+}
+.pool:hover,
+.pool:hover > .progressContainer {
+  background:#EEE !important;
 }
 .pool > .progressContainer:before {
   content:"";
@@ -157,7 +162,7 @@ h1 {
 }
 .pool > .progressContainer > .progressBar {
   width:0%;
-  height:30px;
+  height:20px;
   background:green;
   display:inline-block;
   transition: all .1s;
@@ -178,7 +183,7 @@ h1 {
 .pool > .progressContainer > .progressBar:before {
   width:80px;
   content:"";
-  height:30px;
+  height:20px;
   background: inherit;
   position:absolute;
   left:-80px;
@@ -186,7 +191,7 @@ h1 {
 .pool > .progressContainer > .participantContainer {
   display:inline-block;
   width: 80px;
-  height: 30px;
+  height: 20px;
   position: absolute;
   top: 0;
   left: -80px;
@@ -198,7 +203,7 @@ h1 {
 }
 .pool > .progressContainer > .participantContainer > .name{
   position:relative;
-  top: 10px;
+  top: 3px;
 }
 .pool > .progressContainer > .time,
 .pool > .progressContainer > .time:focus {
@@ -242,18 +247,19 @@ h1 {
   margin-right: 0px;
   background: white;
   z-index: 4000;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .newPool > input {
   border-radius: 0;
+    border: 1px solid #DDD;
   border-right:0px;
-  width: 173px;
-  height: 29px;
+  width: 100px;
   position: relative;
   background: white;
-  top: -2px;
   z-index: 30000;
-  padding: 0px 5px;
+  padding: 5px 5px;
+  vertical-align: top;
+
 }
 .newPool > .newPoolButton {
   margin-left:10px;
@@ -261,7 +267,8 @@ h1 {
   position:relative;
   margin:0px;
   border-radius: 0px;
-  height: 22px;
+  height: 14px;
+  font-size: initial;
   padding: 5px 16px;
   background: #e2e2e2bd;
 }
@@ -279,17 +286,16 @@ h1 {
 }
 .averageBar #average {
   position:absolute;
- 
   white-space: nowrap;
-  padding: 5px 5px;
+  padding: 3px 5px;
   z-index:1000;
-  left:-75px;
-  width:140px;
+  left: -26px;
+  width: 40px;
   text-align:center;
-  border:2px solid #ffbe00;
+  border: 2px solid #ffbe00;
   background:#fff9e8;
   color: #846200;
-  bottom:-32px;
+  bottom: -26px;
 }
 
 
