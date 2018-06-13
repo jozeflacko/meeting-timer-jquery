@@ -74,6 +74,7 @@ $( document ).ready(function() {
     if (noteContent.length) {
       noteContent += ' ';
     }
+    instructions.text('');
     recognition.start();
   });
 

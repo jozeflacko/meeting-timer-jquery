@@ -1,5 +1,5 @@
 .scrum-app {
-  padding: 20px;
+  padding: 0px 20px;
   /* border:1px solid #DDD; */
   /* background: #f3fcff; */
   padding-bottom: 100px;
@@ -14,6 +14,7 @@ h1 {
   font-size:20px;
   color:#EEE;
   margin:0px;
+  display: none;
 }
 .hint {
   background: #ffffd3;
@@ -26,9 +27,9 @@ h1 {
   margin-top:10px;
 }
 
-.buttonsPanel {position: relative;text-align: right;margin-right: -11px;top: 70px;}
+.buttonsPanel {position: relative;text-align: right;margin-right: -11px;top: 24px;}
 .buttonsPanel > * {
-  min-width: 60px;
+  min-width: 20px;
 }
 
 .totalTimerLabel {
@@ -47,17 +48,14 @@ h1 {
 .totalTime {
   border:none;
   font-weight: bold;
-  font-size: 31px;
-  color: #5d5d5d;
-  float: right;
-  text-align: right;
+  font-size: 19px;
+  color: #000000;
+  text-align: center;
   position: absolute;
-  right: -6px;
-  top: 28px;
-  padding-right: 5px;
-  width: 132px;
-  background: #f1f1f1;
-  border-radius: 4px;
+  left: 0px;
+  top: 23px;
+  width: 82px;
+  background: #e0e0e0;
 }
 
 .header {
@@ -145,10 +143,9 @@ h1 {
   position:absolute;
   left:0px;
   height: 120%;
-  top: -10%;
+  top: -20%;
   width: 2px;
-  background: #cccccc;
-
+  background: #e0e0e0;
   z-index:300;
 }
 .pool > .progressContainer:after {
@@ -208,7 +205,7 @@ h1 {
 .pool > .progressContainer > .time,
 .pool > .progressContainer > .time:focus {
       display:inline-block;
-      top: -9px;
+      top: -6px;
       /* left: -80px; */
       position: relative;
       border:none;
@@ -217,31 +214,31 @@ h1 {
       text-decoration:none;
       outline: none;
       cursor:context-menu;
-      font-size: 21px;
+      font-size: 13px;
       z-index: 100;
       background: transparent;
-      width: 60px;
-      color: inherit;
+      width: 39px;
+      color: #777;
       text-align: center;
 }
 .pool > .remove {
   position: absolute;
-  right: -26px;
-  top: -9px;
-  padding: 2px;
-  height: 21px;
-  width: 21px;
+  left: -96px;
+  margin: 0px;
+  padding: 0px;
+  height: 20px;
+  top: 1px;
   line-height: 21px;
   /* background: transparent; */
   border: none !important;
   box-shadow: none !important;
   background: transparent;
-  color: #e88989;
+  color: #ffb0b0;
   border-radius: 50%;
   text-align: center;
 }
 .newPool {
-  margin-top: 90px;
+  margin-top: 30px;
   text-align: left;
   white-space: nowrap;
   margin-right: 0px;
