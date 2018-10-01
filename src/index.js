@@ -1,7 +1,7 @@
 "use strict";
 
-var INITIAL_TIME = '00:01:00';
-var PARTICIPANTS = ['Jozef','Gabriel','Emil','Hoda','Matheus','Fede','Fritz', 'Samuel','Inge','Stefan','Abduaziz','Ognjen'];
+var INITIAL_TIME = '00:02:00';
+var PARTICIPANTS = ['Jozef','Gabriel','Matheus','Fede','Fritz','Inge','Stefan','Abduaziz','Ognjen', 'Adrian'];
 var interval;
 var ANIMATION_TIMEOUT = 97;
 
@@ -17,13 +17,12 @@ function createApp() {
   
   
   var breakpoint = createHeader(app);
-  createPools(app, getParticipantsCookie(), breakpoint);
-  
-  createHelp(app);
+  createPools(app, getParticipantsCookie(), breakpoint);  
+  //createHelp(app);
 }
 
 function createHelp(app) {
-  var hint = $('<div class="hint">This is a timer for short <b>Stand-up Meetings</b>. <br>Set time limit for speech, add participants into the pool below and when they are ready to talk, just click on arow with their name. Timer will start automatically.</div>');
+  var hint = $('<div class="hint">This is a timer for <b>Stand-up Meetings</b>. <br>Set time limit for speech, add participants into the pool below and when they are ready to talk, just click on arow with their name. Timer will start automatically.</div>');
   $(app).append(hint);
 }
 
@@ -202,9 +201,9 @@ function createPools(app, participants, breakpointInput) {
   }
   var newPool = $('<div class="newPool"></div>');  
   app.append(newPool);
-    var newPoolName = $('<input type="text "class="newPoolName"/>');  
+    var newPoolName = $('<input type="text" placeholder=" add new person" class="newPoolName"/>');  
     newPool.append(newPoolName);
-    var newPoolButton = $('<span class="newPoolButton jbtn">+</span>');  
+    var newPoolButton = $('<span class="newPoolButton">+</span>');  
     newPool.append(newPoolButton);
     newPoolButton.click(function(e) {
             var name = $(event.target).prev('.newPoolName').val();

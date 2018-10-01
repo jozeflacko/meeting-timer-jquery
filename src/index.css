@@ -1,5 +1,5 @@
 .scrum-app {
-  padding: 0px 20px;
+  padding: 0px 0px 0px 20px;
   /* border:1px solid #DDD; */
   /* background: #f3fcff; */
   padding-bottom: 100px;
@@ -27,7 +27,7 @@ h1 {
   margin-top:10px;
 }
 
-.buttonsPanel {position: relative;text-align: right;margin-right: -11px;top: 24px;}
+.buttonsPanel {position: relative;text-align: right;/* margin-right: -11px; */top: 24px;}
 .buttonsPanel > * {
   min-width: 20px;
 }
@@ -78,7 +78,7 @@ h1 {
   text-align:center;
   margin-left:50%;
   position:relative;
-  left: -14px;
+  left: 4px;
   border-color: #ff6666;
   background: #ffecec;
   color: red;
@@ -112,7 +112,7 @@ h1 {
   white-space: nowrap;
 }
 .pools {
-  padding: 0px 35px 0px 80px;
+  padding: 0px 0px 0px 80px;
   padding-top: 0px;
   position:relative;
 }
@@ -205,9 +205,9 @@ h1 {
 .pool > .progressContainer > .time,
 .pool > .progressContainer > .time:focus {
       display:inline-block;
-      top: -6px;
-      /* left: -80px; */
-      position: relative;
+      top: 3px;
+      left: 3px; 
+      position: absolute;;
       border:none;
       background:transparent;
       z-index:9;
@@ -237,38 +237,8 @@ h1 {
   border-radius: 50%;
   text-align: center;
 }
-.newPool {
-  margin-top: 30px;
-  text-align: left;
-  white-space: nowrap;
-  margin-right: 0px;
-  background: white;
-  z-index: 4000;
-  vertical-align: middle;
-}
-.newPool > input {
-  border-radius: 0;
-    border: 1px solid #DDD;
-  border-right:0px;
-  width: 100px;
-  position: relative;
-  background: white;
-  z-index: 30000;
-  padding: 5px 5px;
-  vertical-align: top;
 
-}
-.newPool > .newPoolButton {
-  margin-left:10px;
-  margin-right:0px;
-  position:relative;
-  margin:0px;
-  border-radius: 0px;
-  height: 14px;
-  font-size: initial;
-  padding: 5px 16px;
-  background: #e2e2e2bd;
-}
+
 .averageBar {
   position:absolute;
   width:2px;
@@ -294,6 +264,27 @@ h1 {
   color: #846200;
   bottom: -26px;
 }
+
+.newPool {
+  margin-top: 30px;
+  text-align: right;
+  white-space: nowrap;
+  margin-right: 0px;
+  background: white;
+  z-index: 4000;
+  font-size:initial;
+  line-height:initial;
+}
+
+.newPool * {
+  padding: 0px;
+  vertical-align: top;
+  margin:0px;
+  display:inline-block;
+  height:16px;
+
+}
+.newPoolButton {margin-left:2px;background:#DDD;padding:2px 10px;border: 1px solid #BBB;position: relative;top: -1px;}
 
 
 
