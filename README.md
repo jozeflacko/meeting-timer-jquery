@@ -2,6 +2,13 @@
 
 ## Timer for meetings. This application is done with Javascript using Jquery
 
-This small demo was rewritten, to try out new version go to git project meeting-timer or visit this page <a href="timer.jozeflacko.com">timer.jozeflacko.com</a> 
+This is just a small timer I made for our stand-ups because they took way too long :) (everybodylikedthat)
 
-To try it out click <a href="https://rawgit.com/opam/scrumTimer/master/src/index.html">here</a> 
+### Screenshot
+<p style='max-width:360px;'>
+	<img src="https://raw.githubusercontent.com/jozeflacko/meeting-timer-jquery/master/img/snippet.jpg" alt="Smiley flower">
+</p> 
+
+## Authors
+
+* **Jozef Lacko** - *Initial work* - [Jozef Lacko](https://jozeflacko.github.io)
