@@ -6,7 +6,7 @@ This is just a small timer I made for our stand-ups because they took way too lo
 
 ### Screenshot
 <p style='max-width:360px;'>
-	<img src="https://github.com/jozeflacko/meeting-timer-jquery/blob/master/img/snippet.png?raw=true" alt="Smiley flower">
+	<img src="https://github.com/jozeflacko/meeting-timer-jquery/blob/master/snippet.jpg?raw=true" alt="Smiley flower">
 </p> 
 
 ## Authors
